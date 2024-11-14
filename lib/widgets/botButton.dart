@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '/screens/second/local_widgets/chat_screen.dart';
 
 class botButton extends StatefulWidget {
   const botButton({super.key});
@@ -8,13 +9,12 @@ class botButton extends StatefulWidget {
 }
 
 class _botButtonState extends State<botButton> {
-  bool _isChatOpen = false;
-
-  void _toggleChat() {
-    setState(() {
-      _isChatOpen = !_isChatOpen;
-    });
-    // chat interface logic
+  void _openChat() {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => const ChatScreen(),
+      ),
+    );
   }
 
   @override
@@ -23,12 +23,10 @@ class _botButtonState extends State<botButton> {
       width: 153,
       height: 153,
       child: FloatingActionButton(
-        onPressed: () {
-          // Handle button tap
-        },
+        onPressed: _openChat, // Changed from _toggleChat to _openChat
         backgroundColor: Colors.transparent,
         elevation: 0,
-        shape: CircleBorder(),
+        shape: const CircleBorder(),
         child: Image.asset(
           'icons/istockphoto-1010001882-612x612-removebg-preview (1).png',
           fit: BoxFit.cover,
